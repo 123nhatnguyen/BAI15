@@ -1,5 +1,6 @@
-import { useState } from "react";
-export const BookEdit = ({book, onEdit }) => {
+import { useState,useContext} from "react";
+import BookContext from "../context/book";
+export const BookEdit = ({book}) => {
     const [title,setTitle]=useState(book.title);
     const [originalTitle] = useState(book.title);
   const [des,setDesc]=useState(book.des); 
@@ -9,7 +10,7 @@ export const BookEdit = ({book, onEdit }) => {
      const handleChangeDes=(e)=>{
       setDesc(e.target.value);
      };
-
+      const {onEdit}=useContext(BookContext);
      const handleSubmit = async (event) => {
         event.preventDefault();
         onEdit(book.id, {
@@ -22,9 +23,10 @@ export const BookEdit = ({book, onEdit }) => {
             //     setTitle(originalTitle);
             //     setDesc(originalDes);
             // }
-
+    //  const tam = useContext(BookContext);
   return (
     <div> 
+    
     <h3>Add a book </h3>
     <form onSubmit={handleSubmit} >
       <div className="ppp">  

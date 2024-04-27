@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import "./bookcreate.css" 
-const BookCreate=({onCreate})=>{
+import BookContext from "../context/book";
+const BookCreate=()=>{
   const [title,setTitle]=useState("title");
   const [des,setDesc]=useState("Description"); 
+  const { onCreate}=useContext(BookContext);
      const handleChangeTitle=(e)=>{
       setTitle(e.target.value);
      };
